@@ -2,6 +2,7 @@ import ResCard from "./ResCard";
 import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRes, setListOfRes] = useState([]);
@@ -74,7 +75,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredListOfRes.map((res, index) => (
-          <ResCard key={res.info.id} resInfo={res} />
+          <Link to={"/restaurants/" + res.info.id} key={res.info.id}>
+            <ResCard resInfo={res} />
+          </Link>
           // No key(not recommended) << index as key << unique id as key(recommended)
         ))}
       </div>
